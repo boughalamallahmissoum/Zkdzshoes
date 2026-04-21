@@ -27,11 +27,11 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="hero-title">BASKET <span class="text-pink">XA</span></h1>
-            <p class="hero-subtitle">الأناقة الإيطالية تلتقي بالجرأة. تصميم عصري يجمع بين<br>الأناقة والراحة المطلقة.</p>
+            <h1 class="hero-title"><span id="dyn-hero-title">BASKET</span> <span class="text-pink" id="dyn-hero-highlight">XA</span></h1>
+            <p class="hero-subtitle" id="dyn-hero-subtitle">الأناقة الإيطالية تلتقي بالجرأة. تصميم عصري يجمع بين<br>الأناقة والراحة المطلقة.</p>
             <div class="price-box">
-                <span class="old-price">3600 د.ج</span>
-                <span class="new-price">2800 د.ج</span>
+                <span class="old-price" id="dyn-old-price">3600 د.ج</span>
+                <span class="new-price" id="dyn-new-price">2800 د.ج</span>
             </div>
             <a href="#order-form" class="btn btn-primary btn-large">اطلب الآن - الدفع عند الاستلام</a>
         </div>
@@ -68,19 +68,8 @@
         <div class="container">
             <h2 class="section-title">ألوان <span class="text-pink">حصرية</span></h2>
             <p class="section-subtitle">اختر اللون الذي يعبر عن شخصيتك</p>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="assets/shoe_yellow_black.png" alt="أسود وأصفر" class="product-img">
-                    <h3 class="product-name">أسود وأصفر</h3>
-                </div>
-                <div class="product-card">
-                    <img src="assets/shoe_red_black.png" alt="أسود وأحمر" class="product-img">
-                    <h3 class="product-name">أسود وأحمر</h3>
-                </div>
-                <div class="product-card">
-                    <img src="assets/shoe_grey_blue.png" alt="رمادي وأزرق" class="product-img">
-                    <h3 class="product-name">رمادي وأزرق</h3>
-                </div>
+            <div class="products-grid" id="dyn-products-grid">
+                <!-- Products will be injected here via JS -->
             </div>
         </div>
     </section>
@@ -136,19 +125,8 @@
 
                     <div class="form-group">
                         <label>اللون</label>
-                        <div class="color-selector">
-                            <label class="color-option">
-                                <input type="radio" name="color" value="yellow_black" checked>
-                                <span class="color-label"><span class="color-dot yellow"></span> أسود وأصفر</span>
-                            </label>
-                            <label class="color-option">
-                                <input type="radio" name="color" value="red_black">
-                                <span class="color-label"><span class="color-dot red"></span> أسود وأحمر</span>
-                            </label>
-                            <label class="color-option">
-                                <input type="radio" name="color" value="grey_blue">
-                                <span class="color-label"><span class="color-dot blue"></span> رمادي وأزرق</span>
-                            </label>
+                        <div class="color-selector" id="dyn-color-selector">
+                            <!-- Color options will be injected here via JS -->
                         </div>
                     </div>
 
@@ -177,11 +155,11 @@
                     <div class="order-summary">
                         <div class="summary-row">
                             <span>سعر المنتج</span>
-                            <span>2800 د.ج</span>
+                            <span id="dyn-summary-price">2800 د.ج</span>
                         </div>
                         <div class="summary-row total">
                             <span>المجموع</span>
-                            <span class="text-pink">2800 د.ج + سعر التوصيل</span>
+                            <span class="text-pink" id="dyn-total-price">2800 د.ج + سعر التوصيل</span>
                         </div>
                     </div>
 

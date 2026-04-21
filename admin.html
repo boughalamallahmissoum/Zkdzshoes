@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة التحكم | BASKET XA</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom Admin CSS -->
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-    <!-- Login Screen (Visible by default) -->
+    <!-- Login Screen -->
     <div id="login-screen" class="login-container">
         <div class="login-box">
             <div class="logo">AX <span>Admin</span></div>
@@ -30,12 +27,11 @@
                     <input type="password" id="admin-password" placeholder="********" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">دخول</button>
-                <p class="demo-note">للتجربة، استخدم أي بريد وكلمة مرور</p>
             </form>
         </div>
     </div>
 
-    <!-- Admin Dashboard (Hidden by default) -->
+    <!-- Admin Dashboard -->
     <div id="dashboard-screen" class="dashboard-container" style="display: none;">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -43,97 +39,173 @@
                 <div class="logo">AX <span>Admin</span></div>
             </div>
             <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-cart-shopping"></i> الطلبات</a></li>
-                <li><a href="#"><i class="fa-solid fa-chart-line"></i> الإحصائيات</a></li>
-                <li><a href="#"><i class="fa-solid fa-box"></i> المنتجات</a></li>
-                <li><a href="#"><i class="fa-solid fa-users"></i> العملاء</a></li>
-                <li><a href="#"><i class="fa-solid fa-gear"></i> الإعدادات</a></li>
+                <li class="active"><a href="#" class="tab-link" data-target="view-orders"><i class="fa-solid fa-cart-shopping"></i> الطلبات</a></li>
+                <li><a href="#" class="tab-link" data-target="view-products"><i class="fa-solid fa-box"></i> المنتجات</a></li>
+                <li><a href="#" class="tab-link" data-target="view-settings"><i class="fa-solid fa-gear"></i> الإعدادات (المحتوى)</a></li>
             </ul>
             <div class="sidebar-footer">
-                <button id="logout-btn" class="btn btn-outline btn-block"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</button>
+                <button id="logout-btn" class="btn btn-outline btn-block"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Header -->
             <header class="dashboard-header">
-                <h2>إدارة الطلبات</h2>
+                <h2 id="page-title">إدارة الطلبات</h2>
                 <div class="admin-profile">
                     <div class="avatar"><i class="fa-solid fa-user"></i></div>
                     <span>المدير</span>
                 </div>
             </header>
 
-            <!-- Stats Widgets -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon" style="color: #4CAF50; background: rgba(76, 175, 80, 0.1);"><i class="fa-solid fa-check"></i></div>
-                    <div class="stat-info">
-                        <h3>إجمالي الطلبات</h3>
-                        <p id="total-orders-count">0</p>
+            <!-- ================= VIEW: ORDERS ================= -->
+            <div id="view-orders" class="tab-view active">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #4CAF50; background: rgba(76, 175, 80, 0.1);"><i class="fa-solid fa-check"></i></div>
+                        <div class="stat-info">
+                            <h3>إجمالي الطلبات</h3>
+                            <p id="total-orders-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #FFC107; background: rgba(255, 193, 7, 0.1);"><i class="fa-solid fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>قيد الانتظار</h3>
+                            <p id="pending-orders-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #2196F3; background: rgba(33, 150, 243, 0.1);"><i class="fa-solid fa-truck"></i></div>
+                        <div class="stat-info">
+                            <h3>مشحونة</h3>
+                            <p id="shipped-orders-count">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #f12c75; background: rgba(241, 44, 117, 0.1);"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <div class="stat-info">
+                            <h3>الأرباح المتوقعة</h3>
+                            <p id="total-revenue">0 د.ج</p>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="color: #FFC107; background: rgba(255, 193, 7, 0.1);"><i class="fa-solid fa-clock"></i></div>
-                    <div class="stat-info">
-                        <h3>طلبات قيد الانتظار</h3>
-                        <p id="pending-orders-count">0</p>
+
+                <!-- Orders Table -->
+                <div class="content-box">
+                    <div class="box-header">
+                        <h3>أحدث الطلبات</h3>
+                        <button class="btn btn-primary btn-sm" id="refresh-orders-btn"><i class="fa-solid fa-rotate"></i> تحديث</button>
                     </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="color: #2196F3; background: rgba(33, 150, 243, 0.1);"><i class="fa-solid fa-truck"></i></div>
-                    <div class="stat-info">
-                        <h3>طلبات مشحونة</h3>
-                        <p id="shipped-orders-count">0</p>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th># الطلب</th>
+                                    <th>العميل</th>
+                                    <th>رقم الهاتف</th>
+                                    <th>المنتج</th>
+                                    <th>الولاية</th>
+                                    <th>التاريخ</th>
+                                    <th>الحالة</th>
+                                    <th>إجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table-body"></tbody>
+                        </table>
                     </div>
+                    <div id="no-orders-msg" class="empty-state" style="display: none;">لا توجد طلبات.</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="color: #f12c75; background: rgba(241, 44, 117, 0.1);"><i class="fa-solid fa-money-bill-wave"></i></div>
-                    <div class="stat-info">
-                        <h3>الأرباح المتوقعة</h3>
-                        <p id="total-revenue">0 د.ج</p>
+            </div>
+
+            <!-- ================= VIEW: PRODUCTS ================= -->
+            <div id="view-products" class="tab-view" style="display: none;">
+                <div class="split-layout">
+                    <!-- Add Product Form -->
+                    <div class="content-box form-side">
+                        <div class="box-header">
+                            <h3>إضافة لون جديد</h3>
+                        </div>
+                        <form id="add-product-form" class="admin-form">
+                            <div class="form-group">
+                                <label>اسم اللون (مثال: أسود وأحمر)</label>
+                                <input type="text" id="prod-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>رمز اللون (CSS Color / Hex)</label>
+                                <input type="text" id="prod-color" placeholder="#ff0000 أو red" required>
+                            </div>
+                            <div class="form-group">
+                                <label>رابط الصورة (URL)</label>
+                                <input type="text" id="prod-img" placeholder="https://..." required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> إضافة المنتج</button>
+                        </form>
+                    </div>
+
+                    <!-- Products List -->
+                    <div class="content-box list-side">
+                        <div class="box-header">
+                            <h3>الألوان الحالية</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>صورة</th>
+                                        <th>الاسم</th>
+                                        <th>اللون</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="products-table-body"></tbody>
+                            </table>
+                        </div>
+                        <div id="no-products-msg" class="empty-state" style="display: none;">لا توجد منتجات.</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Orders Table -->
-            <div class="table-container">
-                <div class="table-header">
-                    <h3>أحدث الطلبات</h3>
-                    <div class="table-actions">
-                        <input type="text" id="search-order" placeholder="بحث برقم الهاتف أو الاسم...">
-                        <button class="btn btn-primary btn-sm" id="refresh-btn"><i class="fa-solid fa-rotate"></i> تحديث</button>
+            <!-- ================= VIEW: SETTINGS ================= -->
+            <div id="view-settings" class="tab-view" style="display: none;">
+                <div class="content-box">
+                    <div class="box-header">
+                        <h3>إعدادات الموقع (المحتوى)</h3>
                     </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="orders-table">
-                        <thead>
-                            <tr>
-                                <th># الطلب</th>
-                                <th>العميل</th>
-                                <th>رقم الهاتف</th>
-                                <th>المنتج (اللون / المقاس)</th>
-                                <th>الولاية</th>
-                                <th>التاريخ</th>
-                                <th>الحالة</th>
-                                <th>إجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="orders-table-body">
-                            <!-- Orders will be injected here via JS -->
-                        </tbody>
-                    </table>
-                </div>
-                <div id="no-orders-msg" class="no-orders" style="display: none;">
-                    <i class="fa-solid fa-box-open"></i>
-                    <p>لا توجد طلبات حتى الآن.</p>
+                    <form id="settings-form" class="admin-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>عنوان الموقع (Hero Title)</label>
+                                <input type="text" id="set-hero-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>الكلمة المميزة بالوردي (Hero Highlight)</label>
+                                <input type="text" id="set-hero-highlight" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>النص الفرعي (Hero Subtitle)</label>
+                            <input type="text" id="set-hero-subtitle" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>السعر القديم</label>
+                                <input type="text" id="set-old-price" required>
+                            </div>
+                            <div class="form-group">
+                                <label>السعر الجديد (الحالي)</label>
+                                <input type="text" id="set-new-price" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> حفظ الإعدادات</button>
+                    </form>
                 </div>
             </div>
+
         </main>
     </div>
 
-    <!-- Custom Admin JS -->
     <script src="admin.js"></script>
 </body>
 </html>
