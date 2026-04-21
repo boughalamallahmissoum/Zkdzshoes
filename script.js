@@ -40,8 +40,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullName = document.getElementById('fullName').value;
         const phone = document.getElementById('phone').value;
         const province = document.getElementById('province').value;
+        const address = document.getElementById('address').value;
+        const size = selectedSizeInput.value;
+        const color = document.querySelector('input[name="color"]:checked').value;
+        const delivery = document.querySelector('input[name="delivery"]:checked').value;
         
-        if (fullName && phone && province) {
+        if (fullName && phone && province && address) {
+            
+            // --- Save to Mock Database (LocalStorage) ---
+            const newOrder = {
+                id: Math.random().toString(36).substring(2, 10), // Generate random ID
+                fullName: fullName,
+                phone: phone,
+                province: province,
+                address: address,
+                size: size,
+                color: color,
+                delivery: delivery,
+                date: new Date().toISOString(),
+                status: 'pending' // Default status
+            };
+
+            let orders = JSON.parse(localStorage.getItem('xa_orders') || '[]');
+            orders.push(newOrder);
+            localStorage.setItem('xa_orders', JSON.stringify(orders));
+            // -------------------------------------------
+
             alert('تم تأكيد طلبك بنجاح! سنتصل بك قريباً.');
             this.reset();
             // Reset custom selectors
