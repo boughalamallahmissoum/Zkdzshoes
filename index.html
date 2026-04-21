@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASKET XA - ألوان حصرية</title>
+    <meta name="description" content="تسوق الآن حذاء BASKET XA الأفضل لتصميم عصري ومريح.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">AX</div>
+            <a href="#order-form" class="btn btn-primary">اطلب الآن</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">BASKET <span class="text-pink">XA</span></h1>
+            <p class="hero-subtitle">الأناقة الإيطالية تلتقي بالجرأة. تصميم عصري يجمع بين<br>الأناقة والراحة المطلقة.</p>
+            <div class="price-box">
+                <span class="old-price">3600 د.ج</span>
+                <span class="new-price">2800 د.ج</span>
+            </div>
+            <a href="#order-form" class="btn btn-primary btn-large">اطلب الآن - الدفع عند الاستلام</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3 class="feature-title">توصيل سريع</h3>
+                <p class="feature-desc">إلى جميع الولايات</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                <h3 class="feature-title">الدفع عند الاستلام</h3>
+                <p class="feature-desc">ادفع عند استلام طلبك</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 class="feature-title">ضمان الجودة</h3>
+                <p class="feature-desc">أفضل جودة في السوق</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-headphones"></i></div>
+                <h3 class="feature-title">خدمة العملاء</h3>
+                <p class="feature-desc">دعم متواصل</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Colors Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">ألوان <span class="text-pink">حصرية</span></h2>
+            <p class="section-subtitle">اختر اللون الذي يعبر عن شخصيتك</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="assets/shoe_yellow_black.png" alt="أسود وأصفر" class="product-img">
+                    <h3 class="product-name">أسود وأصفر</h3>
+                </div>
+                <div class="product-card">
+                    <img src="assets/shoe_red_black.png" alt="أسود وأحمر" class="product-img">
+                    <h3 class="product-name">أسود وأحمر</h3>
+                </div>
+                <div class="product-card">
+                    <img src="assets/shoe_grey_blue.png" alt="رمادي وأزرق" class="product-img">
+                    <h3 class="product-name">رمادي وأزرق</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-section" id="order-form">
+        <div class="container">
+            <div class="form-wrapper">
+                <h2 class="form-title">أكمل طلبك الآن</h2>
+                <p class="form-subtitle">يرجى ملء الاستمارة وسنتصل بك لتأكيد طلبك</p>
+                
+                <form id="checkout-form" class="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">الاسم الكامل</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" placeholder="05XXXXXXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="province">الولاية</label>
+                        <select id="province" name="province" required>
+                            <option value="" disabled selected>اختر الولاية</option>
+                            <option value="1">16 - الجزائر</option>
+                            <option value="2">09 - البليدة</option>
+                            <option value="3">31 - وهران</option>
+                            <option value="4">25 - قسنطينة</option>
+                            <option value="5">23 - عنابة</option>
+                            <!-- Add more as needed -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">البلدية / العنوان التفصيلي</label>
+                        <input type="text" id="address" name="address" placeholder="البلدية أو العنوان" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>المقاس</label>
+                        <div class="size-selector">
+                            <button type="button" class="size-btn" data-size="40">40</button>
+                            <button type="button" class="size-btn active" data-size="41">41</button>
+                            <button type="button" class="size-btn" data-size="42">42</button>
+                            <button type="button" class="size-btn" data-size="43">43</button>
+                            <button type="button" class="size-btn" data-size="44">44</button>
+                        </div>
+                        <input type="hidden" name="size" id="selected-size" value="41">
+                    </div>
+
+                    <div class="form-group">
+                        <label>اللون</label>
+                        <div class="color-selector">
+                            <label class="color-option">
+                                <input type="radio" name="color" value="yellow_black" checked>
+                                <span class="color-label"><span class="color-dot yellow"></span> أسود وأصفر</span>
+                            </label>
+                            <label class="color-option">
+                                <input type="radio" name="color" value="red_black">
+                                <span class="color-label"><span class="color-dot red"></span> أسود وأحمر</span>
+                            </label>
+                            <label class="color-option">
+                                <input type="radio" name="color" value="grey_blue">
+                                <span class="color-label"><span class="color-dot blue"></span> رمادي وأزرق</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>طريقة التوصيل</label>
+                        <div class="delivery-selector">
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery" value="home" checked>
+                                <div class="delivery-card">
+                                    <i class="fa-solid fa-house"></i>
+                                    <span>توصيل للمنزل</span>
+                                    <small>يضاف سعر التوصيل</small>
+                                </div>
+                            </label>
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery" value="desk">
+                                <div class="delivery-card">
+                                    <i class="fa-solid fa-box"></i>
+                                    <span>توصيل للمكتب</span>
+                                    <small>يضاف سعر التوصيل</small>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>سعر المنتج</span>
+                            <span>2800 د.ج</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>المجموع</span>
+                            <span class="text-pink">2800 د.ج + سعر التوصيل</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-submit">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">آراء <span class="text-pink">عملائنا</span></h2>
+            <p class="section-subtitle">شاهد ما يقوله عملاؤنا عنا</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"حذاء ممتاز ومريح جداً، التوصيل كان سريع والتعامل راقي. شكراً لكم."</p>
+                    <div class="testimonial-author">- أحمد م.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"الجودة أفضل بكثير مما توقعت. اللون الأسود والأحمر رائع جداً في الواقع."</p>
+                    <div class="testimonial-author">- كريم س.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"أنصح الجميع بالتعامل معهم، الحذاء خفيف ومناسب للاستعمال اليومي."</p>
+                    <div class="testimonial-author">- يوسف ع.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="logo">AX</div>
+            <p>جميع الحقوق محفوظة &copy; 2026</p>
+            <div class="footer-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">شروط الخدمة</a>
+                <a href="#">سياسة الاسترجاع</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
